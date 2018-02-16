@@ -12,6 +12,7 @@ namespace SenderConsole
     {
         static void Main(string[] args)
         {
+            while(true)
             using (NamedPipeClientStream pipeClient =
                 new NamedPipeClientStream(".", "testpipe", PipeDirection.InOut))
             {
@@ -19,14 +20,15 @@ namespace SenderConsole
                 // Connect to the pipe or wait until the pipe is available.
                 Console.Write("Attempting to connect to pipe...");
                 pipeClient.Connect();
-
+                   
                 Console.WriteLine("Connected to pipe.");
                 Console.WriteLine("There are currently {0} pipe server instances open.",
                     pipeClient.NumberOfServerInstances);
                 using (StreamWriter sr = new StreamWriter(pipeClient))
                 {
                     // Display the read text to the console
-                    sr.WriteLine(Console.ReadLine());
+                    var msg = Console.ReadLine();
+                    sr.WriteLine(msg);
                 }
             }
             Console.Write("Press Enter to continue...");
