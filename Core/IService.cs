@@ -11,9 +11,13 @@ namespace Core
     [ServiceContract]
     public interface IService
     {
+        //Action<string> SendAction { get; set; }
+        Action<string> ListenAction { get; set; }
+
         [OperationContract]
         void Send(string a);
-        [OperationContract]
-        string Listen();
+
+        //[OperationContract]
+        //string Listen();
     }
 }
