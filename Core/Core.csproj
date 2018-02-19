@@ -116,6 +116,7 @@
     <Compile Include="IService.cs" />
     <Compile Include="MyCommand.cs" />
     <Compile Include="MyService.cs" />
+    <Compile Include="NewService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

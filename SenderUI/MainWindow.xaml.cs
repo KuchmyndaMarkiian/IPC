@@ -61,7 +61,7 @@ namespace SenderUI
             using (StreamWriter sw = new StreamWriter(clientStream))
             {
                 sw.AutoFlush = true;
-                sw.WriteLine(RichTextBox.Text);
+                //sw.WriteLine(RichTextBox.Text);
             }
         }
     }
