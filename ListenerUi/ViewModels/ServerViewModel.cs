@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.IO.Pipes;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,11 +12,14 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 using Core;
+using ListenerUi.Annotations;
 
 namespace ListenerUi.ViewModels
 {
-    class ServerViewModel
+    class ServerViewModel : INotifyPropertyChanged
     {
+        private string _allText = "";
+
         public ServerViewModel()
         {
             SendCommand = new MyCommand()
@@ -49,7 +54,7 @@ namespace ListenerUi.ViewModels
                 {
                     using (var reader = new StreamReader(pipe))
                     {
-                        Application.Current.Dispatcher.Invoke(() => AllText = reader.ReadToEnd().Replace("\r\n", ""));
+                        lock(this) AllText = reader.ReadToEnd().Replace("\r\n", "");
                     }
                 }
                 pipe.Close();
@@ -59,6 +64,19 @@ namespace ListenerUi.ViewModels
         public ICommand SendCommand { get; private set; }
 
         public string Text { get; set; } = "";
-        public string AllText { get; set; } = "";
+
+        public string AllText
+        {
+            get { return _allText; }
+            set { _allText = value; OnPropertyChanged(); }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

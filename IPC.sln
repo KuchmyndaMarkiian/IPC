@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListenerConsole", "Listener
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SenderConsole", "SenderConsole\SenderConsole.csproj", "{7730C63E-E72A-44CD-8189-F53BC8AC1CE6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "named pipe server and client", "named pipe server and client", "{4C597219-1813-441D-9D8D-ABF32A53BA43}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NetNamedPipeBinding", "NetNamedPipeBinding", "{F2609781-876D-4ED7-917C-2F1C73A1A869}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{17E00F65-7642-49D6-9201-25C1C7D4A17E} = {4C597219-1813-441D-9D8D-ABF32A53BA43}
+		{3DF33CDB-807C-42EA-BEA2-A30E2D2D0BF8} = {4C597219-1813-441D-9D8D-ABF32A53BA43}
+		{3E4C1DFF-BCDC-4755-BC6E-F680C5C3C5D2} = {4C597219-1813-441D-9D8D-ABF32A53BA43}
+		{5F12E9C8-C424-46BC-A97E-D03800387499} = {4C597219-1813-441D-9D8D-ABF32A53BA43}
+		{7730C63E-E72A-44CD-8189-F53BC8AC1CE6} = {4C597219-1813-441D-9D8D-ABF32A53BA43}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {58F8FC55-9DBE-40F1-9C93-412A5DA23E93}
